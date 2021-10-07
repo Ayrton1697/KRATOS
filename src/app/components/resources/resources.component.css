@@ -1,0 +1,56 @@
+.main{
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.mat-stepper-vertical {
+    margin-top: 8px;
+    padding: 20rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* 
+  /deep/ .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #ffe900 !important;
+    color: #fff;
+}
+/deep/ .mat-icon{
+    background-color: #ffe900 !important;
+}
+  .mat-stepper-vertical {
+   
+  }
+  .mat-step-label{
+      color: white !important;
+  }
+  /deep/ .mat-step-text-label {
+    color: white !important;
+    font-family: inherit;
+    font-weight: 200;
+    font-size: 1.7rem;
+}
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+   */
+
+   .mat-button, .mat-icon-button, .mat-stroked-button {
+    color: white;
+    background: transparent;
+}
+
+.mat-stepper-vertical, .mat-stepper-horizontal {
+ /*  font-family: inherit; */
+  color: white;
+}
+
+/deep/ .mat-select-panel-wrap {
+  flex-basis: 100%;
+  background-color:  rgb(4, 4, 53);
+}

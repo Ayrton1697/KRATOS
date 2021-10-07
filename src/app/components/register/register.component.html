@@ -1,0 +1,25 @@
+<div class="wrapper fadeInDown container">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    
+  
+  
+    <!-- Login Form -->
+    <form #loginForm="ngForm">
+    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre" #email="ngModel" [(ngModel)]="user.name">
+    <input type="text" id="surname" class="fadeIn second" name="surname" placeholder="Apellido" #email="ngModel" [(ngModel)]="user.surname">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="user.email">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" #password="ngModel" [(ngModel)]="user.password">
+      <select name="rol" id="rol" class="rol">
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+     </select>
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+  </div>
+</div>
+

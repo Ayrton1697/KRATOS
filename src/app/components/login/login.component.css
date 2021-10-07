@@ -1,0 +1,389 @@
+html {
+    background-color: #ffe900;
+  }
+  
+  body {
+    height: 100vh;
+  }
+  
+  a {
+    color:  #ffe900;
+    display:inline-block;
+    text-decoration: none;
+    font-weight: 400;
+    font-family: inherit;
+  }
+  
+  h2 {
+    font-family: inherit;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display:inline-block;
+    margin: 40px 8px 10px 8px; 
+    color: #ffe900;
+  }
+  
+  
+  
+  /* STRUCTURE */
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    min-height: 100%;
+    padding: 20px;
+  }
+  
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #131d279a;
+    padding: 2rem 5rem;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+  }
+  
+  #formFooter {
+    /* border-top: 1px solid #ffe900; */
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  
+  
+  /* TABS */
+  
+  h2.inactive {
+    color: white;
+  }
+  
+  h2.active {
+    color: white;
+    border-bottom: 2px solid #ffe900;
+  }
+  
+  
+  
+  /* FORM TYPOGRAPHY*/
+  
+  input[type=button], input[type=submit], input[type=reset]  {
+    font-family: inherit;
+    background-color: #ffe900;
+    border: none;
+    color: rgb(12, 9, 9);
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 2rem 2rem 2rem 2rem;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color: #ffe900;
+  }
+  
+  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  
+  input[type=password] ,[type=email]{
+    font-family: inherit;
+    background-color: #131d279a;
+    border: none;
+    color: #ffffff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border-bottom: 2px solid #b5b818;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  input[type=password]:focus,[type=email]:focus {
+    background-color: #131d279a !important;
+    border-bottom: 2px solid #ffe900;
+  }
+  input[type=email]:-internal-autofill-selected,input[type=password]:-internal-autofill-selected {
+    background-color: rgba(121, 15, 15, 0) !important;
+    background-image: none !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px #131d27 inset !important;
+ -webkit-text-fill-color: rgb(255, 255, 255) !important;
+}
+
+
+
+  input[type=password]::placeholder,[type=email]::placeholder {
+    color: white !important;
+  }
+
+  
+  /* ANIMATIONS */
+  
+  /* Simple CSS3 Fade-in-down Animation */
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  
+  .fadeIn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+  
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+  }
+  
+  .fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+  
+  .fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+  
+  .fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+  
+  .fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+  
+  /* Simple CSS3 Fade-in Animation */
+  .underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: #ffe900;
+    color: black !important;
+    content: "";
+    transition: width 0.2s;
+  }
+  
+  .underlineHover:hover {
+    color: #7c7312;
+  }
+  
+  .underlineHover:hover:after{
+    width: 100%;
+  }
+  
+  
+  
+  /* OTHERS */
+  
+  *:focus {
+      outline: none;
+  } 
+  
+  #icon {
+    width:60%;
+  }
+
+  .exito-aut{
+   
+  }
+  .exito-aut a{
+    color: rgb(69, 219, 39) !important;
+  }
+  
+  .error-aut{
+    
+  }
+  .error-aut a{
+    color: rgb(236, 16, 16) !important;
+  }
+
+
+/*  .spinner{
+    border: 3px solid rgb(14, 8, 70);
+    border-left-color: white;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    animation: spinner 1s ease infinite;
+    content: " ";
+  }
+
+  @keyframes spinner {
+    0% {
+       transform:rotate(0deg) ;  
+       }
+
+    100%{
+      transform:rotate(360deg) ; 
+     }
+  } */
+
+
+
+  .loader {
+    color: #ecf01e;
+    font-size: 2rem;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 2rem auto;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+    animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  }
+  @-webkit-keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @keyframes load6 {
+    0% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    5%,
+    95% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+    10%,
+    59% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+    }
+    20% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+    }
+    38% {
+      box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+    }
+    100% {
+      box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+    }
+  }
+  @-webkit-keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes round {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }

@@ -1,0 +1,110 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+@import '~@angular/material/theming';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Kratos-FRONT-primary: mat.define-palette(mat.$yellow-palette);
+$Kratos-FRONT-accent: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Kratos-FRONT-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+
+
+
+@function my-mat-light-theme-foreground($color) {
+  @return (
+      base:              rgb(236, 222, 27),
+      divider:           $color,
+      dividers:          $color,
+      disabled:          rgba($color, 0.8),
+      disabled-button:   rgb(236, 222, 27),
+      disabled-text:     rgb(236, 222, 27),
+      hint-text:        rgb(236, 222, 27),
+      secondary-text:    rgb(236, 222, 27),
+      icon:              rgb(236, 222, 27),
+      icons:            rgb(236, 222, 27),
+      text:              rgba($color, 1),
+      slider-min:        rgba($color, 0.87),
+      slider-off:        rgba($color, 0.1),
+      slider-off-active: rgba($color, 0.8),
+      
+  );
+};
+
+
+$dark-theme-background-palette: (
+  status-bar: rgba(4, 4, 53, 0.479),
+  app-bar:    rgba(4, 4, 53, 0.479),
+  background: rgba(4, 4, 53, 0.479),
+  hover:      rgba(4, 4, 53, 0.479), // TODO(kara): check style with Material Design UX
+  card:       rgba(4, 4, 53, 0.479),
+  dialog:     rgba(4, 4, 53, 0.479),
+  disabled-button: rgba(4, 4, 53, 0.479),
+  raised-button: rgba(4, 4, 53, 0.479),
+  focused-button: rgba(4, 4, 53, 0.479),
+  selected-button: rgba(4, 4, 53, 0.479),
+  selected-disabled-button: rgba(4, 4, 53, 0.479),
+  disabled-button-toggle: rgba(4, 4, 53, 0.479),
+  unselected-chip: rgba(4, 4, 53, 0.479),
+  disabled-list-option: rgba(4, 4, 53, 0.479),
+  tooltip: rgba(4, 4, 53, 0.479),
+);
+
+
+
+$my-foreground: my-mat-light-theme-foreground(white);
+$my-background: $dark-theme-background-palette;
+// $my-foreground: mat.$light-theme-background-palette;
+// You can put any color here. I've chosen mat-color($my-app-primary, 700)
+/* 
+$Kratos-FRONT-theme: mat.define-dark-theme((
+  color: (
+    primary: $Kratos-FRONT-primary,
+    accent: $Kratos-FRONT-accent,
+    warn: $Kratos-FRONT-warn,
+    foreground:$my-foreground,
+    background: $my-background
+  )
+)); */
+
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$custom-typography:mat.define-typography-config(
+  $font-family: 'Montserrat'
+);
+
+$Kratos-FRONT-theme:((
+  color: (
+    primary: $Kratos-FRONT-primary,
+    accent: $Kratos-FRONT-accent,
+    warn: $Kratos-FRONT-warn,
+    foreground:$my-foreground,
+    background: $my-background
+  ),
+  typography:$custom-typography
+));
+
+
+//$my-app-theme-custom: map-merge($Kratos-FRONT-theme, (foreground: $my-foreground));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+
+
+@include mat-base-typography($custom-typography);
+@include mat.all-component-themes($Kratos-FRONT-theme);
+
