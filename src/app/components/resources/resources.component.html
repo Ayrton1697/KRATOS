@@ -1,57 +1,80 @@
-<div class="main">
-      <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Seleccioná la máquina</ng-template>
-
-    
-            <mat-form-field appearance="fill">
-              <mat-label>Máquina</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                  {{food.value}} 
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
+<div class="main__stepper">
+  <!-- <div class="stepper-container"> -->
+    <mat-stepper orientation="vertical" [linear]="isLinear"  #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup" >
+          <ng-template matStepLabel>Seleccioná la máquina</ng-template>
 
 
-        <mat-step [stepControl]="secondFormGroup" label="Seleccioná la cantidad de RAM">
-          <form [formGroup]="secondFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Máquina</mat-label>
+            <mat-select formControlName="firstCtrl">
+              <mat-option  *ngFor="let food of foods" [value]="food.value" >
+                {{food.value}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-            <mat-form-field appearance="fill">
-              <mat-label>Memoria RAM</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let ram of rams" [value]="ram.value">
-                  {{ram.value}} 
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
-
-
-
-        <mat-step>
-          <ng-template matStepLabel>Terminar</ng-template>
-          <p>Enviar todo y terminar</p>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Done</button>
+            <button mat-button matStepperNext>Siguiente</button>
           </div>
-        </mat-step>
-      </mat-stepper>
+        </form>
+      </mat-step>
+
+
+      <mat-step [stepControl]="secondFormGroup" label="Seleccioná la cantidad de RAM" >
+        <form [formGroup]="secondFormGroup">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Memoria RAM</mat-label>
+            <mat-select formControlName="secondCtrl">
+              <mat-option *ngFor="let ram of rams" [value]="ram.value">
+                {{ram.value}} 
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Volver</button>
+            <button mat-button matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+
+
+      <mat-step>
+        <ng-template matStepLabel>Terminar</ng-template>
+        <p>Enviar todo y terminar</p>
+        <div>
+          <button mat-button matStepperPrevious>Volver</button>
+          <button mat-button (click)="sendStepper()">Enviar</button>
+        </div>
+      </mat-step>
+
+    </mat-stepper>
+    
+    <div *ngIf="this.bool" class="loader">
+      <a href="#" class="loader"></a>
+    </div>
+
+    <div *ngIf="this.sent && !this.bool" >
+      <svg  class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+<!-- 
+    <div class="loader">
+      <a href="#" class="loader"></a>
+    </div>
+
+    <div  >
+      <svg  class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div> -->
+  <!-- </div> -->
+        
 </div>
-
-
-  

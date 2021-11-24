@@ -4,10 +4,10 @@
     
   
   
-    <!-- Login Form -->
+    <!-- Register Form -->
     <form #loginForm="ngForm">
-    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre" #email="ngModel" [(ngModel)]="user.name">
-    <input type="text" id="surname" class="fadeIn second" name="surname" placeholder="Apellido" #email="ngModel" [(ngModel)]="user.surname">
+    <input type="text" id="name" class="fadeIn second" name="name" placeholder="Nombre" #name="ngModel" [(ngModel)]="user.name">
+    <input type="text" id="surname" class="fadeIn second" name="surname" placeholder="Apellido" #surname="ngModel" [(ngModel)]="user.surname">
       <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="user.email">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" #password="ngModel" [(ngModel)]="user.password">
       <select name="rol" id="rol" class="rol">

@@ -8,6 +8,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {ErrorComponent} from './components/error/error.component';
 import { ResourcesComponent } from './components/resources/resources.component';
+import { MachinesComponent } from './components/machines/machines.component';
 
 //Guard
 /* import {IdentityGuard} from './services/identity.guard'; */
@@ -19,6 +20,7 @@ const appRoutes :Routes=[
    {path : 'login' ,component:LoginComponent},
    {path : 'register' ,component:RegisterComponent},
    {path : 'resources' ,component:ResourcesComponent},
+   {path : 'machines' ,component: MachinesComponent},
    {path : '**', component: ErrorComponent}
 ];
 

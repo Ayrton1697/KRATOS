@@ -77,6 +77,7 @@ html {
   
   input[type=button], input[type=submit], input[type=reset]  {
     font-family: inherit;
+    font-family: 'Montserrat', sans-serif;
     background-color: #ffe900;
     border: none;
     color: rgb(12, 9, 9);
@@ -110,33 +111,33 @@ html {
   }
   
   input[type=password] ,[type=email]{
-    font-family: inherit;
+    font-family: 'Montserrat', sans-serif !important;
     background-color: #131d279a;
     border: none;
-    color: #ffffff;
+    color: #e9db20;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1.3rem;
     margin: 5px;
     width: 85%;
     border-bottom: 2px solid #b5b818;
-    -webkit-transition: all 0.5s ease-in-out;
+ /*    -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; */
   }
   
   input[type=password]:focus,[type=email]:focus {
     background-color: #131d279a !important;
     border-bottom: 2px solid #ffe900;
   }
-  input[type=email]:-internal-autofill-selected,input[type=password]:-internal-autofill-selected {
+/*   input[type=email]:-internal-autofill-selected,input[type=password]:-internal-autofill-selected {
     background-color: rgba(121, 15, 15, 0) !important;
     background-image: none !important;
-    color: rgb(255, 255, 255) !important;
+    color: rgb(233, 218, 17) !important;
 }
 
 input:-webkit-autofill,
@@ -145,13 +146,13 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
 {
  -webkit-box-shadow: 0 0 0 30px #131d27 inset !important;
- -webkit-text-fill-color: rgb(255, 255, 255) !important;
-}
+ -webkit-text-fill-color: rgb(233, 218, 17) !important;
+} */
 
 
 
   input[type=password]::placeholder,[type=email]::placeholder {
-    color: white !important;
+    color: rgb(148, 133, 19) !important;
   }
 
   

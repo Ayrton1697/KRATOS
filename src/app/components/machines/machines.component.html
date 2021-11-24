@@ -1,0 +1,32 @@
+
+<div class="wrapper container">
+   
+    <div class="container-machines" *ngIf = "this.machines" >
+
+        <div class="machines-on" *ngFor = "let machine of machines" [ngClass]="{'on':machine.state == 'on','off': machine.state =='off'}">
+           <span class="machine machine__id">
+               {{machine.Id}} 
+           </span>
+            <span class="machine machine__name">
+               {{machine.Name}} 
+           </span>
+            <span class="machine machine__owner">
+               Owner: {{machine.owner}} 
+           </span>
+           <div>
+               <mat-slide-toggle ng-model="machine.active" [checked]="this.machine.State"   (click)="openDialog(this.machine,$event,checked)"   (toggleChange)="toggleChange(this.machine, checked)"   class="machine" >
+                 <span *ngIf = "this.machine.active">Apagar</span>
+                <span *ngIf = "!this.machine.active">Encender</span>
+                </mat-slide-toggle>
+              
+                <!-- <button mat-raised-button (click)="openDialog(this.machine)">Pick one</button> -->
+         </div>
+        </div>
+    </div>
+
+</div>
+<!-- <mat-slide-toggle ng-model="machine.active" [checked]="this.machine.state == 'on'" (toggleChange)="toggleChange(this.machine.id)" [disabled]="machine.owner !== this.user"  class="machine" >
+    <span *ngIf = "this.machine.state == 'on'">Apagar</span>
+   <span *ngIf = "this.machine.state == 'off'">Encender</span>
+    
+   </mat-slide-toggle> -->

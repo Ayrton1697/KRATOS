@@ -45,7 +45,8 @@ export class LoginComponent implements OnInit {
 			//console.log(JSON.stringify(res))
 			if(user){
 				this.message = 'Inicio de sesión exitoso';
-
+				this.token = res.AccessToken;
+				localStorage.setItem('token',this.token);
 				setTimeout( () => {this._router.navigate([''])},
 				1000);
 				

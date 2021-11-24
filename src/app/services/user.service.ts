@@ -32,7 +32,41 @@ export class UserService {
 
 		return this._http.post(this.url+'register', params, {headers:headers});
 	}
+	
+	getServerNews(){
+		/* let params= 'json='+json; */
+		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+									/*   .set('AccessToken',this.token); */
+		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/get-databases', {headers:headers} );
+	}
 
+	getServerStatus(){
+		/* let params= 'json='+json; */
+		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+									/*   .set('AccessToken',this.token); */
+		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/server-status', {headers:headers} );
+	}
+	changePower(power: any){
+		let instances = ["i-0a6cc297a44c8e8a3"];
+		let params = {'instances':instances,
+					'power': power}
+/* 	{"instances": ["i-0a6cc297a44c8e8a3"], "power":"off"
+
+} */	console.log(params)
+		let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/power_change', params, {headers:headers} );
+	}
+	mock(){
+	
+		/* let params= 'json='+json; */
+
+		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+									/*   .set('AccessToken',this.token); */
+		/* return this._http.get('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/login',{headers:headers} ); */
+		/* return this._http.get('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/get-server-info' ); */
+/* 		return this._http.get('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/hello' ); */
+		return this._http.get('https://jsonplaceholder.typicode.com/todos/1', {headers:headers} );
+	}
 	
 /* 	login(user:any,gettoken=null):Observable<any>{
 		
@@ -69,7 +103,7 @@ export class UserService {
 	
 	/* return this._http.post<any>('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/login',data,{headers:headers}); */
 		return this._http.post<any>('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/login',user);
-
+		//return this._http.get<any>('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/server-info');
 	}
 
 

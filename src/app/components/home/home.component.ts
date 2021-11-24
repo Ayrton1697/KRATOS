@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,36 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
     title= 'Kratos';
-
-  constructor() { }
+    public novedades: any;
+    
+    constructor(
+    private _userService: UserService
+  ) { }
 
   ngOnInit(): void {
+    this._userService.getServerNews().subscribe(
+      (res:any) =>{
+       console.log(res);
+       this.novedades = res;
+      },
+      err =>{
+       console.log(err);
+       console.log('No anda');
+      }
+    );
+
+    this._userService.getServerStatus().subscribe(
+      (res:any) =>{
+       console.log(res);
+       this.novedades = res;
+      },
+      err =>{
+       console.log(err);
+       console.log('No anda');
+      }
+    );
+    
+
   }
 
 }

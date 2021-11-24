@@ -8,11 +8,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class ResourcesComponent implements OnInit {
 
-  isLinear = false;
+  isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   isEditable = false;
-
+  public bool;
+  public sent;
+  
   foods = [
     {value: 'M1'},
     {value: 'M2'},
@@ -31,7 +33,10 @@ export class ResourcesComponent implements OnInit {
   ];
 
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder) {
+    this.bool = false;
+    this.sent = false;
+   }
 
   ngOnInit() {
       this.firstFormGroup = this._formBuilder.group({
@@ -41,4 +46,25 @@ export class ResourcesComponent implements OnInit {
         secondCtrl: ['', Validators.required]
       });
     }
+
+    sendStepper(){
+      console.log('holaaaa')
+      this.bool = false;
+      this.sent=false;
+      this.bool = true,
+      
+      setTimeout( () => {
+        this.bool = false;
+        this.sent = true;
+        this.setSent();
+       },
+				2000);
+     
+      
+
+    }
+    setSent(){
+      setTimeout( ()=>this.sent=false, 2000)
+    }
+    
   }

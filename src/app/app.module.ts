@@ -19,9 +19,15 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule } from '@angular/material/form-field';
 import { MatFormFieldControl } from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MachinesComponent } from './components/machines/machines.component';
+import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { PocsComponent } from './components/pocs/pocs.component';
+import { DialogOverviewExampleDialog } from './components/machines/machines.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,11 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     AdminComponent,
     ErrorComponent,
     HomeComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    MachinesComponent,
+    DialogComponent,
+    PocsComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -45,7 +55,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDialogModule
     
   ],
   providers: [appRoutingProviders],
@@ -53,5 +65,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
+  entryComponents: []
 })
 export class AppModule { }

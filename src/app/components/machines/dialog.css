@@ -1,0 +1,22 @@
+.dialog{
+   /*  background-color: rgb(228, 207, 19); */
+    padding: 3rem;
+    font-family: 'Montserrat';
+}
+
+h1{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 200;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 4rem;
+}
+.button-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
