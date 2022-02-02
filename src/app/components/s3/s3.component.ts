@@ -1,15 +1,13 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-s3',
+  templateUrl: './s3.component.html',
+  styleUrls: ['./s3.component.css']
 })
-export class RegisterComponent implements OnInit {
-
+export class S3Component implements OnInit {
 
   public user!: User;
 	public status!: string;

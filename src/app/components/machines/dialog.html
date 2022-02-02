@@ -1,10 +1,11 @@
 
     <div class="dialog">
         <h1>Confirmar acción</h1>
-        <h2>{{data.machine.owner}}, Estás seguro que querés realizar la acción?</h2>
+        <h2>{{data.machine.owner}} ¿Estás seguro que querés realizar la acción?</h2>
     
         <div class="button-container">
-            <button mat-button color="primary" [mat-dialog-close] (click)='toggleChange(data.machine)'>Confirmar</button>
+            <button mat-button color="primary" [mat-dialog-close]='data.machine'>Confirmar</button>
             <button mat-button   (click)='onNoClick($event)'>Cancelar</button>
         </div>
     </div>
+<!--     (click)='toggleChange(data.machine)' -->

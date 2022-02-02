@@ -23,11 +23,11 @@
       </mat-step>
 
 
-      <mat-step [stepControl]="secondFormGroup" label="Seleccioná la cantidad de RAM" >
+      <mat-step [stepControl]="secondFormGroup" label="Seleccioná la cantidad de Almacenamiento" >
         <form [formGroup]="secondFormGroup">
 
           <mat-form-field appearance="fill">
-            <mat-label>Memoria RAM</mat-label>
+            <mat-label>Almacenamiento</mat-label>
             <mat-select formControlName="secondCtrl">
               <mat-option *ngFor="let ram of rams" [value]="ram.value">
                 {{ram.value}} 

@@ -34,8 +34,7 @@ html {
     align-items: center;
     flex-direction: column; 
     justify-content: center;
-    min-height: 100%;
-    padding: 20px;
+    min-height: calc(100vh - 7rem - 7rem);
   }
   
   #formContent {
@@ -56,6 +55,8 @@ html {
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: space-evenly;
   }
   
   

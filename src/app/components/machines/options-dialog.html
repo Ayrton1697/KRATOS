@@ -1,0 +1,46 @@
+
+    <div class="dialog">
+
+        <span class="material-icons-outlined options__icon" [mat-dialog-close]>
+            close
+        </span>
+
+     <!--    <h1>TESTING URL: {{data.url}}</h1>
+        <h1>TESTING APAGADO: {{data.apagado}}</h1>
+        <h1>TESTING MACHINE: {{data.machine}}</h1>
+        <h1>TESTING MACHINE ID: {{data.machine.Id}}</h1>
+        <h1>TESTING MACHINE NAME: {{data.machine.Name}}</h1>
+ -->
+        <h1>Opciones para Instancia: {{data.machine.Name}}</h1>
+        <h2>{{data.machine.Id}}</h2>
+
+        <div class="machine__url">
+            <h1>URL de trabajo </h1>
+       <!--      <div class="loader__container" *ngIf="this.loader">
+                <span href="#" class="loader loader__machines"></span>
+            </div> -->
+            <div *ngIf = "data.machine.changing == true " class="loader"></div>
+            <div *ngIf = "data.machine.State =='pending'" class="loader"></div>
+            <a *ngIf = "data.machine.State =='running' && data.url != '' " href="http://{{data.url}}" target="_blank" class="machine__url--href">{{data.url}}</a>
+            <h2 *ngIf = "data.machine.State == 'stopping' ||  data.machine.State =='stopped' || data.url == '' ">La máquina no tiene una URL disponible</h2>
+        </div>
+     
+
+        <h1>Tipo de máquina: {{data.machine.Platform}}</h1> 
+    <div class="schedule__off">
+        
+        <h1>Apagado automatico a las 19:00 HS </h1>
+        
+        <mat-slide-toggle [(ngModel)]="data.apagado" (click) ="consoleLog(data.machine)" class="machine" >
+        <span *ngIf = "data.apagado">Activado</span>
+        <span *ngIf = "!data.apagado">Desactivado</span>
+        </mat-slide-toggle>
+    </div>
+       
+
+        <div class="button-container">
+            <button mat-button color="primary" [mat-dialog-close]='{machine:data.machine,apagado:data.apagado}'>Confirmar</button>
+            <button mat-button   (click)='onNoClick($event)'>Cancelar</button>
+        </div>
+    </div>
+<!--     (click)='toggleChange(data.machine)' -->

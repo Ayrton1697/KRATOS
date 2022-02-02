@@ -1,0 +1,30 @@
+<navbar></navbar>
+<div class="wrapper fadeInDown container">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+
+    <!-- Login Form -->
+    <form #resetPasswordForm="ngForm" (ngSubmit)="onSubmit(resetPasswordForm)" >
+    <input autocomplete="new-password" type="password" id="password" class="fadeIn second" name="password" placeholder="New Password" #password="ngModel" [(ngModel)]="data.newPassword" required>
+    <input type="submit" class="fadeIn fourth" value="Reset Passowrd">
+    </form>
+
+
+    <div id="formFooter" *ngIf="this.message || this.bool" >
+    
+      <div  *ngIf="this.message && !this.bool" [ngClass]="{'error-aut':this.message.includes('incorrectos'),'exito-aut':this.message =='Inicio de sesión exitoso'}">
+          <a href="#">{{this.message}}</a>
+      </div>
+     
+      <div *ngIf="this.bool && !this.message">
+        <a href="#" class="loader"></a>
+      </div>
+
+    </div>
+
+   
+    
+  </div>
+</div>
+
