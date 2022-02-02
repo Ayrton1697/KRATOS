@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import { User } from 'src/app/models/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { IdentityGuard } from 'src/app/identity-guard.guard';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +13,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  public user!: User;
+	public user!: User;
+	public session!:any;
+	public username!:any;
+	public email!:any;
 	public status!: string;
 	public token!: string;
 	public identity!: string;
 	public message:string | undefined;
 	public bool;
+
+
   constructor(
 	private _userService:UserService,
 	private _router: Router,
 	private _http: HttpClient,
   ){
     
-  	this.user= new User(1,'','' ,'ROLE_USER','' ,'');
+  	this.user= new User(1,'','','' ,'ROLE_USER','' ,'');
 	  this.bool = false;
   }
 
@@ -40,15 +47,49 @@ export class LoginComponent implements OnInit {
 			   return a.email === this.user.email && a.password === this.user.password;
 			   
 			}); */
-			console.log(res)
+			
+
 			this.bool = false;
-			//console.log(JSON.stringify(res))
+			/* console.log(JSON.stringify(res)) */
 			if(user){
+				/* this.identity = JSON.parse(user); */
+				/* console.log(JSON.stringify(user)) */
+				this.user['role'] = res['User']['UserAttributes'].find((item: { Name: string; }) => item.Name == 'custom:rol')['Value'];
+				console.log(user);
 				this.message = 'Inicio de sesión exitoso';
 				this.token = res.AccessToken;
 				localStorage.setItem('token',this.token);
+				localStorage.setItem('identity',JSON.stringify(this.user));
+
+				this._userService.watchLocalStorage.next(localStorage.getItem('identity'));
+
+				localStorage.setItem('email',JSON.stringify(this.user.email));
+			/* 	localStorage.setItem('role',JSON.stringify(res['User']['UserAttributes']['custom:role'])); */
+				
+				this.email = localStorage.getItem('email');
+				this.username = this.email.substring(1, this.email.indexOf('@'))
+				localStorage.setItem('username', this.username);
+
+				setTimeout(()=>{
+					localStorage.clear();
+					this._userService.watchLocalStorage.next(localStorage.getItem('identity'));
+				}, 1000*60*60)
+
+				
+
+			/* 	localStorage.clear(); */
+			if(res['type'] == 'new_password_required'){
+				
+				this.session = res['session'];
+				localStorage.setItem('session',this.session)
+			
+				setTimeout( () => {this._router.navigate(['/confirmSignUp'])},
+				1000);
+			}else{
 				setTimeout( () => {this._router.navigate([''])},
 				1000);
+			}
+				
 				
 
 			}else{
@@ -123,3 +164,4 @@ export class LoginComponent implements OnInit {
   	
 
 }
+

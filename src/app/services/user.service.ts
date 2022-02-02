@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { global } from './global';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class UserService {
   public url:string;
   public identity:any;
   public token: any;
+  public watchLocalStorage = new BehaviorSubject(localStorage.getItem('identity'));
+  public watchMachine = new BehaviorSubject<any>('any');
 
   constructor(
     private _http: HttpClient,
@@ -44,18 +47,34 @@ export class UserService {
 		/* let params= 'json='+json; */
 		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
 									/*   .set('AccessToken',this.token); */
-		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/server-status', {headers:headers} );
+		let token = {
+						'token' : localStorage.getItem('token')
+					}
+		
+		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/server-status',token ,{headers:headers});
 	}
-	changePower(power: any){
-		let instances = ["i-0a6cc297a44c8e8a3"];
-		let params = {'instances':instances,
+	changePower(power: any,instances:any){
+		/* let instances = ["i-0a6cc297a44c8e8a3"]; */
+		let instance_list = [""+instances+""]
+		let params = {'instances':instance_list,
 					'power': power}
+		
 /* 	{"instances": ["i-0a6cc297a44c8e8a3"], "power":"off"
 
-} */	console.log(params)
+} */	
 		let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
 		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/power_change', params, {headers:headers} );
 	}
+	pocPower(pocInstance:any, power:any){
+		let pocInstace = pocInstance
+		let params = {'maquina': pocInstace,
+					'power': power}
+
+		console.log(params)
+		let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/poc_power', params, {headers:headers} );
+	}
+
 	mock(){
 	
 		/* let params= 'json='+json; */
@@ -94,8 +113,7 @@ export class UserService {
 		'password': user.password
 	}
 	let data = JSON.stringify(user);
-	console.log(data);
-	console.log(user);
+	
 	
 	/* 'http://localhost:3000/users' */
 
@@ -111,19 +129,24 @@ export class UserService {
 	logout(){
 		localStorage.removeItem('token');
 		localStorage.removeItem('identity');
+		localStorage.clear();
+		this.watchLocalStorage.next(localStorage.getItem('identity'));
 		this._router.navigate(['']);
 	}
 
 	getIdentity(){
 
-		let identity=JSON.parse(localStorage.getItem('identity') || '{}');
-
-		if(identity && identity != 'undefined'){
+		/* let identity=JSON.parse(localStorage.getItem('identity') || '{}'); */
+		let identity = localStorage.getItem('identity')
+		if(identity && (identity != undefined || identity != null)){
 			this.identity= identity;
+			
 		}else{
 			this.identity=null;
+			
 		}
 		return this.identity;
+/* 		return true; */
 
 	}
 	getToken(){
@@ -135,5 +158,44 @@ export class UserService {
 			this.token=null;
 		}
 		return this.token;
-	}	
+	}
+	
+	forgotPassword(email:any){
+		let params = {
+			'step': 1,
+			'username':email	
+		}
+		
+		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+
+		return this._http.post('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/reset_password',params,{headers:headers});
+
+	}
+	confirmForgotPassword(email:any, code:any, newPassword:any){
+
+		let params = {
+			'step': 2,
+			'username': email,
+			'confirmation_code': code,
+			'new_password': newPassword
+			}
+		
+		let headers= new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+
+		return this._http.post('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/reset_password',params,{headers:headers});
+	}
+
+	completeAuthChallenge(username:any, newPassword:any,session:any){
+		let params = {
+			'step':3,
+			'username': username,
+			'new_password':newPassword,
+			'Session':session
+		}
+		
+		let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+
+		return this._http.post('https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/reset_password',params, {headers:headers});
+
+	}
 }

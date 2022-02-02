@@ -1,26 +1,35 @@
-
+<navbar></navbar>
 <div class="wrapper container">
    
-    <div class="container-machines" *ngIf = "this.machines" >
-
-        <div class="machines-on" *ngFor = "let machine of machines" [ngClass]="{'on':machine.state == 'on','off': machine.state =='off'}">
-           <span class="machine machine__id">
+    <div class="container-machines">
+        <div class="machines-on error-message"  *ngIf="this.message != '' " >
+            {{this.message}}
+        </div>
+        <div  class="machines-on" *ngFor = "let machine of machines" [ngClass]="{'on':machine.state == 'on','off': machine.state =='off'}">
+          <!--  <span class="machine machine__id">
                {{machine.Id}} 
-           </span>
-            <span class="machine machine__name">
-               {{machine.Name}} 
+           </span> -->
+           <span class="material-icons-outlined options__icon" (click) = "openSecondDialog(this.machine, $event)">
+            more_horiz
+            </span>
+            <span class="machine machine__name" matTooltip={{machine.Name}}>
+               <!-- {{machine.Name}}  -->
+               {{ (machine.Name.length>10) ? (machine.Name | slice:0:10)+'..':(machine.Name) }}
            </span>
             <span class="machine machine__owner">
                Owner: {{machine.owner}} 
            </span>
            <div>
-               <mat-slide-toggle ng-model="machine.active" [checked]="this.machine.State"   (click)="openDialog(this.machine,$event,checked)"   (toggleChange)="toggleChange(this.machine, checked)"   class="machine" >
+               <mat-slide-toggle [(ngModel)]="this.machine.active"   (click)="openDialog(this.machine,$event,checked)"   (toggleChange)="toggleChange(this.machine, checked)"   class="machine" >
                  <span *ngIf = "this.machine.active">Apagar</span>
                 <span *ngIf = "!this.machine.active">Encender</span>
                 </mat-slide-toggle>
               
                 <!-- <button mat-raised-button (click)="openDialog(this.machine)">Pick one</button> -->
          </div>
+        </div>
+        <div class="loader__container" *ngIf="this.loader">
+            <span href="#" class="loader loader__machines"></span>
         </div>
     </div>
 

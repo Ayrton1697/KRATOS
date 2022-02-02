@@ -27,16 +27,7 @@ export class HomeComponent implements OnInit {
       }
     );
 
-    this._userService.getServerStatus().subscribe(
-      (res:any) =>{
-       console.log(res);
-       this.novedades = res;
-      },
-      err =>{
-       console.log(err);
-       console.log('No anda');
-      }
-    );
+
     
 
   }

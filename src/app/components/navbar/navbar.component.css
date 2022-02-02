@@ -1,0 +1,19 @@
+.toolbar{
+    
+}
+
+.welcome-btn{
+    cursor: pointer;
+}
+
+.nav__item{
+    text-decoration: none;
+    transition: all .4s;
+}
+
+/* .nav__item:hover{
+    transform: scale(1.05);
+} */
+#reg-log:hover{
+    color: #ffe900;
+}

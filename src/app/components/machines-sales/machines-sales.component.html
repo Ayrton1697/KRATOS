@@ -10,8 +10,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Máquina</mat-label>
             <mat-select formControlName="firstCtrl">
-              <mat-option  *ngFor="let food of foods" [value]="food.value" >
-                {{food.value}} 
+              <mat-option  *ngFor="let poc_machine of poc_machines" [value]="poc_machine.value" >
+                {{poc_machine.value}} 
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -21,27 +21,6 @@
           </div>
         </form>
       </mat-step>
-
-
-      <mat-step [stepControl]="secondFormGroup" label="Seleccioná la cantidad de RAM" >
-        <form [formGroup]="secondFormGroup">
-
-          <mat-form-field appearance="fill">
-            <mat-label>Memoria RAM</mat-label>
-            <mat-select formControlName="secondCtrl">
-              <mat-option *ngFor="let ram of rams" [value]="ram.value">
-                {{ram.value}} 
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <div>
-            <button mat-button matStepperPrevious>Volver</button>
-            <button mat-button matStepperNext>Siguiente</button>
-          </div>
-        </form>
-      </mat-step>
-
 
 
       <mat-step>
@@ -49,7 +28,7 @@
         <p>Enviar todo y terminar</p>
         <div>
           <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button (click)="sendStepper()">Enviar</button>
+          <button mat-button (click)="sendStepper(stepper)">Enviar</button>
         </div>
       </mat-step>
 

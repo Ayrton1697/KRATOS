@@ -28,6 +28,16 @@ import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/
 import { DialogComponent } from './components/dialog/dialog.component';
 import { PocsComponent } from './components/pocs/pocs.component';
 import { DialogOverviewExampleDialog } from './components/machines/machines.component';
+import { OptionsDialogOverviewExampleDialog } from './components/machines/machines.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ConfirmResetPasswordComponent } from './components/confirm-reset-password/confirm-reset-password.component';
+import { ConfirmSignUpComponent } from './components/confirm-sign-up/confirm-sign-up.component';
+import { StorageComponent } from './components/storage/storage.component';
+import { S3Component } from './components/s3/s3.component';
+import { MachinesAllComponent } from './components/machines-all/machines-all.component';
+import { MachinesSalesComponent } from './components/machines-sales/machines-sales.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +51,16 @@ import { DialogOverviewExampleDialog } from './components/machines/machines.comp
     MachinesComponent,
     DialogComponent,
     PocsComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    OptionsDialogOverviewExampleDialog,
+    NavbarComponent,
+    ResetPasswordComponent,
+    ConfirmResetPasswordComponent,
+    ConfirmSignUpComponent,
+    StorageComponent,
+    S3Component,
+    MachinesAllComponent,
+    MachinesSalesComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +76,8 @@ import { DialogOverviewExampleDialog } from './components/machines/machines.comp
     MatButtonModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
     
   ],
   providers: [appRoutingProviders],

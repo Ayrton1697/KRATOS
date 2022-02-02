@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 4rem;
+    min-height: calc(100vh - 7rem - 7rem);
 
 }
 
@@ -14,7 +14,7 @@
     margin: 2rem;
     height: 20rem;
     width: 20rem;
-
+    position: relative;
 }
 .machine{
     color: white;
@@ -38,6 +38,18 @@
 .machine__owner{
     font-size: 1.2rem;
 }
+.loader__machines{
+    width: 6rem;
+    height: 6rem;
+    font-size: 6rem;
+}
+.loader__container{
+    padding: 5rem;
+    /* height: calc(100vh - 7rem); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .on{
 
 }
@@ -46,4 +58,25 @@
 }
 .off span{
     color: #91847b;
+}
+
+.error-message{
+    color: white;
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: #341e8342 !important;
+    border: 2px solid rgba(240, 240, 18, 0.932);
+}
+
+.options__icon{
+    color: white;
+    position: absolute;
+    padding: .7rem;
+    top: 0;
+    right: 0%;
+    cursor: pointer;
 }
