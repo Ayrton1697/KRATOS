@@ -146,7 +146,7 @@ export class MachinesComponent implements OnInit {
       /*   console.log(this.power) */
        /*  let token = localStorage.getItem('token'); */
       
-        this._userService.changePower(this.power,machine.Id).subscribe(
+        this._userService.changePower(this.power,machine.Id,machine.Name).subscribe(
          (res:any)=>{
           console.log(res);
           console.log(machine)
@@ -177,8 +177,12 @@ export class MachinesComponent implements OnInit {
               this.machines[i].active = false
              
             }
-            this.machines[i].changing = false; // LA MAQUINA NO ESTA CAMBIANDO DE ESTADO,A ESTA ALTURA YA CAMBIO O NUNCA SE PIDIO EL CAMBIO. SE USA PARA EL LOADER DEL POPUP
-            this.machines[i].apagadoAuto = true; //ESTOH HAY QUE CAMBIARLO, HAY QUE TRAER SI EL APAGADO ESTA ON U OFF DE LA TABLA Y AHI ASIGNARLO
+            if(this.machines[i]['Auto-Shutdown'] == "On"){
+              //this.machines[i].changing = false; // LA MAQUINA NO ESTA CAMBIANDO DE ESTADO,A ESTA ALTURA YA CAMBIO O NUNCA SE PIDIO EL CAMBIO. SE USA PARA EL LOADER DEL POPUP
+              this.machines[i].apagadoAuto = true; //ESTOH HAY QUE CAMBIARLO, HAY QUE TRAER SI EL APAGADO ESTA ON U OFF DE LA TABLA Y AHI ASIGNARLO
+            }else{
+              this.machines[i].apagadoAuto = false;
+            }
          }
           }, 
           err =>{
@@ -233,7 +237,18 @@ export class MachinesComponent implements OnInit {
    dialogRef.afterClosed().subscribe(result => {  
      if(result != "" && result != undefined){
       result.machine.apagadoAuto = result.apagado
-      console.log(result.machine)
+      console.log(result.machine);
+
+      this._userService.scheduleShutdown(result.machine.Id, result.machine.apagadoAuto == true ? 'On' : 'Off').subscribe(
+        res =>{
+          console.log('Se modificó el apagado automático correctamente!')
+          console.log(res)
+        },
+        err =>{
+          console.log('Error al modificar el apagado automático')
+          console.log(err)
+        }
+      )
      }else{
   /*     for(var i = 0; i < this.machines.length;i++){
         this.machines[i].apagadoAuto = true;
@@ -310,8 +325,13 @@ getMachines(first?:any){
         this.machines[i].active = false
        
       }
-      this.machines[i].changing = false; // LA MAQUINA NO ESTA CAMBIANDO DE ESTADO,A ESTA ALTURA YA CAMBIO O NUNCA SE PIDIO EL CAMBIO. SE USA PARA EL LOADER DEL POPUP
-      this.machines[i].apagadoAuto = true; //ESTOH HAY QUE CAMBIARLO, HAY QUE TRAER SI EL APAGADO ESTA ON U OFF DE LA TABLA Y AHI ASIGNARLO
+      if(this.machines[i]['Auto-Shutdown'] == "On"){
+        //this.machines[i].changing = false; // LA MAQUINA NO ESTA CAMBIANDO DE ESTADO,A ESTA ALTURA YA CAMBIO O NUNCA SE PIDIO EL CAMBIO. SE USA PARA EL LOADER DEL POPUP
+        this.machines[i].apagadoAuto = true; //ESTOH HAY QUE CAMBIARLO, HAY QUE TRAER SI EL APAGADO ESTA ON U OFF DE LA TABLA Y AHI ASIGNARLO
+      }else{
+        this.machines[i].apagadoAuto = false;
+      }
+     
    }
   
       console.log('Log del getMachines:');
@@ -416,7 +436,7 @@ export class DialogOverviewExampleDialog {
    console.log(this.power)
   /*  let token = localStorage.getItem('token'); */
  
-   this._userService.changePower(this.power,machine.Id).subscribe(
+   this._userService.changePower(this.power,machine.Id, machine.Name).subscribe(
     (res:any)=>{
      console.log(res);
     
@@ -437,7 +457,7 @@ export class DialogOverviewExampleDialog {
     }
   );
 
-   this.url = 'https://asasasasas'
+   this.url = machine['DNS_name']
    if(machine.active){
      window.alert('Esta es tu URL para trabajar:' + machine.owner + this.url);
    }
@@ -525,7 +545,13 @@ export class OptionsDialogOverviewExampleDialog {
   }
 
   consoleLog(value:any){
-   /*  console.log(value) */
+/*     setTimeout(() => {
+      console.log(value)
+      console.log(this.data.apagado)
+    }, 3000) */
+  /*   console.log(value)
+      console.log(this.data.apagado) */
+   
   }
 /*   openThirdDialog(machine:any,$event: { preventDefault: any; }): void {
     console.log(machine)

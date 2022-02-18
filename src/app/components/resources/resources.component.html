@@ -10,10 +10,26 @@
           <mat-form-field appearance="fill">
             <mat-label>Máquina</mat-label>
             <mat-select formControlName="firstCtrl">
-              <mat-option  *ngFor="let food of foods" [value]="food.value" >
-                {{food.value}} 
+              <div *ngIf = "!loader">
+                <mat-option  *ngFor="let machine of machines" [value]="machine.Name">
+                  {{machine.Name}} 
+                </mat-option>
+              </div>
+            <div *ngIf = "loader">
+              <mat-option class="loading-options" >
+                Cargando...
+                <div class="loader" *ngIf="loader"></div>
               </mat-option>
+            </div>
             </mat-select>
+
+     <!--        <mat-select formControlName="firstCtrl" *ngIf = "loader" >
+              <mat-option class="loading-options" >
+                Cargando...
+                <div class="loader" *ngIf="loader"></div>
+              </mat-option>
+          </mat-select> -->
+
           </mat-form-field>
 
           <div>

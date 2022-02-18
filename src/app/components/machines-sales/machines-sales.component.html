@@ -10,14 +10,16 @@
           <mat-form-field appearance="fill">
             <mat-label>Máquina</mat-label>
             <mat-select formControlName="firstCtrl">
-              <mat-option  *ngFor="let poc_machine of poc_machines" [value]="poc_machine.value" >
+              <mat-option  *ngFor="let poc_machine of poc_machines" [value]="poc_machine.state == 'Disponible' ? poc_machine.value : 'No' " [ngClass]="poc_machine.state == 'Disponible' ? 'disponible' : 'no-disponible' " 
+              [matTooltipClass]="poc_machine.state == 'Disponible' ? 'tooltip-disponible' : 'tooltip-no-disponible' " matTooltip="{{poc_machine.state}}">
                 {{poc_machine.value}} 
               </mat-option>
             </mat-select>
           </mat-form-field>
 
           <div>
-            <button mat-button matStepperNext>Siguiente</button>
+            <button mat-button *ngIf = "this.firstFormGroup.value['firstCtrl'] != 'No'"  matStepperNext>Siguiente</button>
+          <span *ngIf = "this.firstFormGroup.value['firstCtrl'] == 'No'" class="stepper-option__disabled">La opcion seleccionada no está disponible</span>
           </div>
         </form>
       </mat-step>
@@ -28,7 +30,7 @@
         <p>Enviar todo y terminar</p>
         <div>
           <button mat-button matStepperPrevious>Volver</button>
-          <button mat-button (click)="sendStepper(stepper)">Enviar</button>
+          <button  mat-button [disabled]= "this.firstFormGroup.value['firstCtrl'] == 'No' " (click)="sendStepper(stepper)">Enviar</button>
         </div>
       </mat-step>
 

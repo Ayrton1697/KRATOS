@@ -30,7 +30,7 @@
     <p>Selecciona la accion a realizar:</p>
   
     <div class="card-container">
-      <a class="card"  routerLink="/S3">
+      <a *ngIf="this.services.includes('S3')" class="card"  routerLink="/S3">
         <span class="material-icons-outlined">
           backup
           </span>
@@ -38,7 +38,7 @@
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>  
     </a>
 
-      <a class="card"  routerLink="/resources">
+      <a class="card" *ngIf="this.services.includes('RAM')" routerLink="/resources">
           <span class="material-icons-outlined">
             data_usage
             </span>
@@ -47,7 +47,7 @@
       </a>
       
       
-      <a class="card" routerLink="/storage">
+      <a class="card" *ngIf="this.services.includes('STORAGE')" routerLink="/storage">
         <span class="material-icons-outlined">
           storage
           </span>
@@ -55,7 +55,7 @@
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
       </a>
   
-      <a class="card" routerLink="/machinesAll">
+      <a class="card" *ngIf="this.services.includes('EC2')" routerLink="/machinesAll">
         <span class="material-icons-outlined">
           computer
           </span>
