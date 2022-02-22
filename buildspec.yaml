@@ -1,0 +1,29 @@
+version: 0.1
+
+env:
+    variables:
+        CACHE_CONTROL: "86400"
+        S3_BUCKET: "https://s3.console.aws.amazon.com/s3/buckets/kratos-web"
+        BUILD_FOLDER: "dist"
+
+phases:
+  install:
+    commands:
+      - echo installing nodejs...
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt-get install -y nodejs  #aws code build use ubuntu environement
+  pre_build:
+    commands:
+      - echo installing dependencies...
+      - npm i -g @angular/cli
+      - npm install
+  build:
+    commands:
+      # - echo testing...
+      # - echo building...
+      - ng build --prod
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist/kratos-FRONT
