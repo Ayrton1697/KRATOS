@@ -10,10 +10,14 @@ export class HomeComponent implements OnInit {
 
     title= 'Kratos';
     public novedades: any;
-    
+    public services:Array<string>;
+
     constructor(
     private _userService: UserService
-  ) { }
+  ) {
+    this.services = [ 'EC2', 'RAM', 'STORAGE'] //'S3', 'RAM', 'STORAGE',
+
+   }
 
   ngOnInit(): void {
     this._userService.getServerNews().subscribe(

@@ -20,10 +20,14 @@ export class MachinesSalesComponent implements OnInit {
   public power: any;
 
   poc_machines = [
-    {value: 'AI-images'},
-    {value: 'AI-text'}
+    {value: 'AI-images', state: 'Disponible'},
+    {value: 'AI-ppe-detection', state: 'Disponible'},
+    {value: 'AI-detección-de-texto',state: 'No disponible'},
+    {value: 'AI-sentiment-analysis',state: 'Disponible'},
+    {value: 'AI-Generación-de-texto',state: 'No disponible'}
  
   ];
+
 
 /*   rams = [
     {value: '2 GB'},
@@ -49,10 +53,13 @@ export class MachinesSalesComponent implements OnInit {
       this.secondFormGroup = this._formBuilder.group({
         secondCtrl: ['', Validators.required]
       });
-    }
 
+      this.poc_machines.sort  /* ORDENAR PARA QUE APAREZCAN PRIMERO LOS DISPONIBLES */
+    }
+    
     sendStepper(stepper: any){
-      
+      console.log(this.firstFormGroup)
+      /* if() */
       this.bool = false;
       this.sent=false;
       this.bool = true,
@@ -72,6 +79,11 @@ export class MachinesSalesComponent implements OnInit {
       }
      );
       
+
+
+
+
+
   /*     setTimeout( () => {
         this.bool = false;
         this.sent = true;

@@ -145,6 +145,10 @@
   }
 }
 
+.loading-options{
+  height: 14rem !important;
+  text-align: center;
+}
 
 /* ANIMACION CHECKMARK */
 

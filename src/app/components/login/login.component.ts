@@ -48,10 +48,12 @@ export class LoginComponent implements OnInit {
 			   
 			}); */
 			
-
+			console.log(res);
 			this.bool = false;
 			/* console.log(JSON.stringify(res)) */
-			if(user){
+		if(user){
+			if(res['type'] != 'new_password_required'){
+				console.log(user)
 				/* this.identity = JSON.parse(user); */
 				/* console.log(JSON.stringify(user)) */
 				this.user['role'] = res['User']['UserAttributes'].find((item: { Name: string; }) => item.Name == 'custom:rol')['Value'];
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit {
 					localStorage.clear();
 					this._userService.watchLocalStorage.next(localStorage.getItem('identity'));
 				}, 1000*60*60)
-
+			}
 				
 
 			/* 	localStorage.clear(); */

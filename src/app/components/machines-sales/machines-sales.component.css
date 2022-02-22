@@ -196,3 +196,44 @@
       box-shadow: inset 0px 0px 0px 30px #7ac142;
     }
   }
+
+  ::ng-deep .red-tooltip{
+    color: white !important;
+    background-color: red !important;
+  }
+
+  .disponible{
+    color: white !important;
+  }
+
+  .disponible:hover{
+    background-color: rgb(23, 23, 131);
+  }
+
+  .no-disponible{
+    color: grey !important;
+    background-color: rgb(54, 54, 54) !important;
+  }
+  .no-disponible:hover{
+    background-color: rgb(17, 17, 17) !important;
+  }
+
+  ::ng-deep .tooltip-disponible{
+    color: white !important;
+    background-color: rgb(194, 194, 48) !important;
+  }
+
+  ::ng-deep .tooltip-no-disponible{
+    color: white !important;
+    background-color: black !important;
+  }
+
+  .stepper-option__disabled{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(255 38 38);
+  }

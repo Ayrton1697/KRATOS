@@ -53,11 +53,12 @@ export class UserService {
 		
 		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/server-status',token ,{headers:headers});
 	}
-	changePower(power: any,instances:any){
+	changePower(power: any,instances:any, instanceName:any){
 		/* let instances = ["i-0a6cc297a44c8e8a3"]; */
 		let instance_list = [""+instances+""]
-		let params = {'instances':instance_list,
-					'power': power}
+		let params = {	'instances':instance_list,
+						'power': power,
+						'name': instanceName}
 		
 /* 	{"instances": ["i-0a6cc297a44c8e8a3"], "power":"off"
 
@@ -73,6 +74,16 @@ export class UserService {
 		console.log(params)
 		let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
 		return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/poc_power', params, {headers:headers} );
+	}
+
+	scheduleShutdown(instance_id:any, value:any){
+		let params = {
+					'instance-id': instance_id,
+					'value': value
+				}	
+		console.log(params)
+				let headers = new HttpHeaders().set('Content-type','application/x-www-form-urlencoded');
+				return this._http.post( 'https://8nr1j98vpf.execute-api.us-east-2.amazonaws.com/dev/schedule-shutdown', params, {headers:headers} );
 	}
 
 	mock(){

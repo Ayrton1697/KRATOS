@@ -31,7 +31,7 @@
         
         <h1>Apagado automatico a las 19:00 HS </h1>
         
-        <mat-slide-toggle [(ngModel)]="data.apagado" (click) ="consoleLog(data.machine)" class="machine" >
+        <mat-slide-toggle [(ngModel)]="data.apagado" (click) ="consoleLog(data.apagado)" class="machine" >
         <span *ngIf = "data.apagado">Activado</span>
         <span *ngIf = "!data.apagado">Desactivado</span>
         </mat-slide-toggle>
