@@ -1,5 +1,6 @@
 .toolbar{
-    
+    display: flex;
+    justify-content: center;
 }
 
 .welcome-btn{
@@ -16,4 +17,24 @@
 } */
 #reg-log:hover{
     color: #ffe900;
+}
+
+.welcome_user_name{
+    text-transform: capitalize;
+}
+.mat-icon-button{
+margin-left: auto;
+}
+/* .mat-menu-item {
+    background-color: #0a0a28de;
+} */
+.mat-menu-panel{
+    background-color: red !important;
+}
+
+.toolbar-middle{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

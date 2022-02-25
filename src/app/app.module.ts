@@ -38,6 +38,8 @@ import { StorageComponent } from './components/storage/storage.component';
 import { S3Component } from './components/s3/s3.component';
 import { MachinesAllComponent } from './components/machines-all/machines-all.component';
 import { MachinesSalesComponent } from './components/machines-sales/machines-sales.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {  MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { MachinesSalesComponent } from './components/machines-sales/machines-sal
     MatSelectModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMenuModule,
+    MatIconModule
     
   ],
   providers: [appRoutingProviders],

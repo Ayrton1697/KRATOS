@@ -4,31 +4,51 @@
       alt="Angular Logo"
       src = "../assets/images/RD-brand-yellow.png "
     />
-    <span routerLink="/"  class="welcome-btn">Welcome</span>
+
+    <span routerLink="/"  *ngIf = "this.user" class="welcome-btn welcome_user_name">Welcome, {{username}}</span>
+    <span routerLink="/"  *ngIf = "!this.user" class="welcome-btn">Kratos App</span>
+    
+ <!--    <div class="spacer" ></div> -->
+ <div class="toolbar-middle">
+  <a aria-label="Login" class="nav__item" routerLink="/resources" id="reg-log"  title="login"  *ngIf = "this.user != null" >
+    S3
+    </a>
+    <a aria-label="Login" class="nav__item" routerLink="/resources" id="reg-log"  title="login"  *ngIf = "this.user != null" >
+    RAM
+    </a>
+    <a aria-label="Login" class="nav__item" routerLink="/storage" id="reg-log"  title="login"  *ngIf = "this.user != null" >
+    Almacenamiento
+    </a>
+    <a aria-label="Login" class="nav__item" routerLink="/machines" id="reg-log"  title="login"  *ngIf = "this.user != null" >
+      Instancias
+      </a>
     <div class="spacer" ></div>
-      <a aria-label="Login" class="nav__item" routerLink="/resources" id="reg-log"  title="login"  *ngIf = "this.user != null" >
-      S3
-      </a>
-      <a aria-label="Login" class="nav__item" routerLink="/resources" id="reg-log"  title="login"  *ngIf = "this.user != null" >
-      RAM
-      </a>
-      <a aria-label="Login" class="nav__item" routerLink="/storage" id="reg-log"  title="login"  *ngIf = "this.user != null" >
-      Almacenamiento
-      </a>
-      <a aria-label="Login" class="nav__item" routerLink="/machines" id="reg-log"  title="login"  *ngIf = "this.user != null" >
-        Instancias
-        </a>
-      <div class="spacer" ></div>
-      <a aria-label="Login" class="nav__item" routerLink="/login" id="reg-log"  title="login"  *ngIf = "this.user == null" >
-      Log in
-      </a>
-      <a aria-label="Register" class="nav__item" id="reg-log"  routerLink="/register" title="register"  *ngIf = "this.user == null" >
-        Register
-      </a>
-      <a aria-label="Register" class="nav__item" id="reg-log"   routerLink="/" (click)='logout()' title="logout"  *ngIf = "this.user != null" >
-        Cerrar sesión
-      </a>
-      <a aria-label="Register" class="nav__item" id="reg-log"   routerLink="/resetPassword" title="resetPassword"  *ngIf = "this.user != null" >
-        Cambiar contraseña
-      </a>
+    <a aria-label="Login" class="nav__item" routerLink="/login" id="reg-log"  title="login"  *ngIf = "this.user == null" >
+    Log in
+    </a>
+    <a aria-label="Register" class="nav__item" id="reg-log"  routerLink="/register" title="register"  *ngIf = "this.user == null" >
+      Register
+    </a>
+ </div>
+    
+
+      <button *ngIf="this.user" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <div>
+        <mat-menu #menu="matMenu"  id="matMenu">
+
+          <button mat-menu-item  routerLink="/" (click)='logout()'>
+            <mat-icon>logout</mat-icon> 
+         <span id="reg-log">Log out</span>
+          </button>
+          <button mat-menu-item  routerLink="/resetPassword">
+            <mat-icon>key</mat-icon>
+          <span id="reg-log">Change password</span>
+          </button>
+
+        </mat-menu>
+      </div>
+     
   </div>

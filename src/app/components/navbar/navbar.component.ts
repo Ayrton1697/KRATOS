@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,17 +12,35 @@ export class NavbarComponent implements OnInit {
 
     public user: any;
     public message:any;
-
+    public username: string | undefined;
     
-  constructor(private _userService : UserService ) {}
+  constructor(private _userService : UserService ) {
 
-  ngOnInit(): void {
-    this.getUser();
+    if(typeof String.prototype.trim !== 'function') {
+      String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g, ''); 
+      }
+    }
+    
+    this.user = JSON.parse(this._userService.getIdentity())
+    if(this.user){
+      this.username = this.user.email.substring(0,this.user.email .indexOf('.'));
+    }
+   
+   
+
   }
 
-  getUser(){
+  ngOnInit(): void {
+   /*  this.getUser(); */
+  
+    
+  }
+
+ /*  getUser(){
    this.user =this._userService.getIdentity()
-    }
+    } */
+
   logout(){
     this.message = 'Has salido exitosamente';
     localStorage.removeItem('identity')

@@ -9,12 +9,12 @@
 }
 
 .machines-on{
-     background-color:#564e766e;
-    background-color: #131d279e;
+    background-color: #0000006e;
     margin: 2rem;
     height: 20rem;
     width: 20rem;
     position: relative;
+    border: 1px solid #bebf5f38;
 }
 .machine{
     color: white;
@@ -68,7 +68,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    background-color: #341e8342 !important;
+    background-color: #110f1a7c !important;
     border: 2px solid rgba(240, 240, 18, 0.932);
 }
 
@@ -79,4 +79,12 @@
     top: 0;
     right: 0%;
     cursor: pointer;
+}
+
+
+/deep/ .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: rgb(228, 200, 44) !important;
+}
+/deep/.mat-slide-toggle-bar {
+    background-color: rgba(139, 128, 63, 0.521) !important;
 }

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 	public user!: User;
 	public session!:any;
 	public username!:any;
-	public email!:any;
+	public email:any;
 	public status!: string;
 	public token!: string;
 	public identity!: string;
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     
   	this.user= new User(1,'','','' ,'ROLE_USER','' ,'');
 	  this.bool = false;
+	 
   }
 
   ngOnInit(): void {
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
 
   onSubmit(user: any){
 	  this.bool = true;
-		this.message = '';
+	  console.log(this.user)
+	this.message = '';
 	this._userService.login(this.user).subscribe(
 		res=>{
 		/* 	const user=res.find((a:any)=>{
@@ -51,6 +53,8 @@ export class LoginComponent implements OnInit {
 			console.log(res);
 			this.bool = false;
 			/* console.log(JSON.stringify(res)) */
+
+		/* Este es el user que mandas en el submit, no el que devuelve la response */
 		if(user){
 			if(res['type'] != 'new_password_required'){
 				console.log(user)
@@ -83,6 +87,12 @@ export class LoginComponent implements OnInit {
 			if(res['type'] == 'new_password_required'){
 				
 				this.session = res['session'];
+
+				localStorage.setItem('email',JSON.stringify(this.user.email));
+				this.email = localStorage.getItem('email');
+				this.username = this.email.substring(1, this.email.indexOf('@'))
+				localStorage.setItem('username', this.username);
+
 				localStorage.setItem('session',this.session)
 			
 				setTimeout( () => {this._router.navigate(['/confirmSignUp'])},

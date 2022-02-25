@@ -23,7 +23,7 @@ import { MachinesSalesComponent } from './components/machines-sales/machines-sal
 
 //Definir rutas
 const appRoutes :Routes=[
-   {path : '', component: HomeComponent},
+   {path : '', component: HomeComponent,canActivate:[IdentityGuard]},
    {path : 'admin', component: AdminComponent},
    {path : 'login' ,component:LoginComponent},
    {path : 'register' ,component:RegisterComponent},

@@ -40,12 +40,13 @@ html {
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #131d279a;
+    background: #00000085;
     padding: 2rem 5rem;
     width: 90%;
     max-width: 450px;
     position: relative;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: none;
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
   }
@@ -113,7 +114,7 @@ html {
   
   input[type=password] ,[type=email]{
     font-family: 'Montserrat', sans-serif !important;
-    background-color: #131d279a;
+    background-color: transparent;
     border: none;
     color: #e9db20;
     padding: 15px 32px;
@@ -132,11 +133,11 @@ html {
   }
   
   input[type=password]:focus,[type=email]:focus {
-    background-color: #131d279a !important;
+    background-color: rgb(27, 27, 27) !important;
     border-bottom: 2px solid #ffe900;
   }
-/*   input[type=email]:-internal-autofill-selected,input[type=password]:-internal-autofill-selected {
-    background-color: rgba(121, 15, 15, 0) !important;
+  input[type=email]:-internal-autofill-selected,input[type=password]:-internal-autofill-selected {
+    background-color: rgba(0, 0, 0, 0.685) !important;
     background-image: none !important;
     color: rgb(233, 218, 17) !important;
 }
@@ -146,9 +147,9 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active
 {
- -webkit-box-shadow: 0 0 0 30px #131d27 inset !important;
- -webkit-text-fill-color: rgb(233, 218, 17) !important;
-} */
+ -webkit-box-shadow: none;
+ /* -webkit-text-fill-color: rgb(233, 218, 17) !important; */
+}
 
 
 

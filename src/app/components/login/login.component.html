@@ -6,9 +6,9 @@
 
     <!-- Login Form -->
     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-      <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="user.email">
+      <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" [(ngModel)]="user.email">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" #password="ngModel" [(ngModel)]="user.password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth"  value="Log In">
     </form>
 
     <!-- Remind Passowrd -->
